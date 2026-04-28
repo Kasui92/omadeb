@@ -51,6 +51,7 @@ omadeb-restart-opencode
 
 # Change app specific themes
 omadeb-theme-set-gnome
+omadeb-theme-set-gnome-extensions
 omadeb-theme-set-vscode
 omadeb-theme-set-obsidian
 
