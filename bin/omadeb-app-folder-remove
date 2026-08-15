@@ -50,7 +50,7 @@ fi
 # Check if folder exists
 if [[ -z $EXISTING_FOLDER ]]; then
   echo "Folder '$FOLDER_NAME' does not exist!"
-  return 1
+  exit 1
 fi
 
 # Set schema and get display name
@@ -109,7 +109,6 @@ if [[ $CURRENT_APPS == *$DESKTOP_FILE* ]]; then
   fi
 else
   echo "App '$DESKTOP_FILE' is not in folder '$FOLDER_DISPLAY_NAME'"
-  return 1
+  exit 1
 fi
-
 
