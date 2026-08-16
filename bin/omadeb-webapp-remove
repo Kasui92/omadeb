@@ -40,7 +40,10 @@ if (( ${#APP_NAMES[@]} == 0 )); then
 fi
 
 for APP_NAME in "${APP_NAMES[@]}"; do
-  omadeb-app-folder-remove "$APP_NAME.desktop" "Web Apps"
+  # A stale app-folder entry must not prevent removal of the web app itself.
+  if ! omadeb-app-folder-remove "$APP_NAME.desktop" "Web Apps"; then
+    echo "Warning: Could not remove $APP_NAME from the Web Apps folder; continuing." >&2
+  fi
   rm -f "$DESKTOP_DIR/$APP_NAME.desktop"
   rm -f "$ICON_DIR/$APP_NAME.png"
   rm -rf "$HOME/.config/omadeb/webapp/$(echo "$APP_NAME" | tr ' ' '-' | tr '[:upper:]' '[:lower:]')"
