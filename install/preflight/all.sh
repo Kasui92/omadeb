@@ -1,5 +1,3 @@
-#!/bin/bash
-
 source $OMADEB_INSTALL/preflight/guard.sh
 source $OMADEB_INSTALL/preflight/begin.sh
 source $OMADEB_INSTALL/preflight/no-sleep.sh

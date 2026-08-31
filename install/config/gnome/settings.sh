@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Center new windows in the middle of the screen
 gsettings set org.gnome.mutter center-new-windows true
 
@@ -15,6 +13,9 @@ gsettings set org.gnome.settings-daemon.plugins.power ambient-enabled false
 # Use 6 fixed workspaces instead of dynamic mode
 gsettings set org.gnome.mutter dynamic-workspaces false
 gsettings set org.gnome.desktop.wm.preferences num-workspaces 6
+
+# Disable the hotkeys in the Dash to Dock extension (most likely culprit)
+gsettings set org.gnome.shell.extensions.dash-to-dock hot-keys false
 
 # Disable the night light feature by default
 gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled false

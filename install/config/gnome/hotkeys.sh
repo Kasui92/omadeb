@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Alt+F4 is very cumbersome
 gsettings set org.gnome.desktop.wm.keybindings close "['<Super>w']"
 
@@ -16,6 +14,7 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys next "['<Shift>AudioP
 gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Shift>F11']"
 
 # Remove default app hotkeys, we set our own later
+gsettings set org.gnome.settings-daemon.plugins.media-keys terminal "[]"
 gsettings set org.gnome.settings-daemon.plugins.media-keys home "[]"
 gsettings set org.gnome.settings-daemon.plugins.media-keys www "[]"
 gsettings set org.gnome.settings-daemon.plugins.media-keys help "[]"
@@ -55,47 +54,57 @@ gsettings set org.gnome.mutter.wayland.keybindings restore-shortcuts "['<Shift><
 # Empty the custom keybindings to start fresh
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "[]"
 
-
 # Menus
-omadeb-keybinding-add 'Launch apps' 'omadeb-apps' '<Super>space'
-omadeb-keybinding-add 'Omadeb menu' 'omadeb-menu' '<Alt><Super>space'
-omadeb-keybinding-add 'System menu' 'omadeb-menu system' '<Super>Escape'
+omadeb-gnome-keybinding-add 'Launch apps' 'omadeb-menu-app' '<Super>space'
+omadeb-gnome-keybinding-add 'Omadeb menu' 'omadeb-menu' '<Alt><Super>space'
+omadeb-gnome-keybinding-add 'System menu' 'omadeb-menu system' '<Super>Escape'
 
 # Aesthetics
-omadeb-keybinding-add 'Theme menu' 'omadeb-menu theme' '<Super><Shift><Control>space'
-omadeb-keybinding-add 'Background menu' 'omadeb-menu background' '<Super><Control>space'
-
-# Control panels
-omadeb-keybinding-add 'Activity' 'omadeb-launch-tui btop' '<Super><Shift>t'
-
-# Control Apple Display brightness
-omadeb-keybinding-add 'Apple Brightness down' "omadeb-brightness-apple-display -5000" '<Control>F1'
-omadeb-keybinding-add 'Apple Brightness up' "omadeb-brightness-apple-display +5000" '<Control>F2'
-omadeb-keybinding-add 'Apple Brightness max' "omadeb-brightness-apple-display +60000" '<Control><Shift>F2'
+omadeb-gnome-keybinding-add 'Theme menu' 'omadeb-menu theme' '<Super><Shift><Control>space'
+omadeb-gnome-keybinding-add 'Background menu' 'omadeb-menu background' '<Super><Control>space'
 
 # Toggles
-omadeb-keybinding-add 'Nightlight toggle' 'omadeb-toggle-nightlight' '<Super><Control>n'
+omadeb-gnome-keybinding-add 'Nightlight toggle' 'omadeb-toggle-nightlight' '<Super><Control>n'
 
 # Screenshots
-omadeb-keybinding-add 'Flameshot' 'sh -c -- "flameshot gui"' '<Control>Print'
+omadeb-gnome-keybinding-add 'Flameshot' 'sh -c -- "flameshot gui"' '<Control>Print'
+
+# File sharing
+omadeb-gnome-keybinding-add 'Share menu' 'omadeb-menu share' '<Super><Control>s'
+
+# Transcoding
+omadeb-gnome-keybinding-add 'Transcode' 'omadeb-transcode' '<Super><Control>period'
+
+# Reminders
+omadeb-gnome-keybinding-add 'Set reminder' 'omadeb-menu reminder-set' '<Super><Control>r'
+omadeb-gnome-keybinding-add 'Show reminders' 'omadeb-reminder show' '<Super><Control><Alt>r'
+omadeb-gnome-keybinding-add 'Clear reminders' 'omadeb-reminder clear' '<Super><Shift><Control>r'
+
+# Control panels
+omadeb-gnome-keybinding-add 'Activity' 'omadeb-launch-tui btop' '<Super><Shift>t'
+
+# Control Apple Display brightness
+omadeb-gnome-keybinding-add 'Apple Brightness down' "omadeb-brightness-apple-display -5000" '<Control>F1'
+omadeb-gnome-keybinding-add 'Apple Brightness up' "omadeb-brightness-apple-display +5000" '<Control>F2'
+omadeb-gnome-keybinding-add 'Apple Brightness max' "omadeb-brightness-apple-display +60000" '<Control><Shift>F2'
 
 # Application bindings
-omadeb-keybinding-add 'Terminal' 'xdg-terminal-exec' '<Super>Return'
-omadeb-keybinding-add 'Terminal' 'xdg-terminal-exec' '<Control><Alt>t'
-omadeb-keybinding-add 'Tmux' 'xdg-terminal-exec bash -c "tmux attach || tmux new -s Work"' '<Super><Alt>Return'
-omadeb-keybinding-add 'Browser' 'omadeb-launch-browser --new-window' '<Shift><Super>b'
-omadeb-keybinding-add 'Browser' 'omadeb-launch-browser --new-window' '<Shift><Super>Return'
-omadeb-keybinding-add 'Browser (private)' 'omadeb-launch-browser --private' '<Shift><Alt><Super>b'
-omadeb-keybinding-add 'File manager' 'nautilus --new-window' '<Shift><Super>f'
-omadeb-keybinding-add 'Docker' 'omadeb-launch-tui lazydocker' '<Super><Shift>d'
-omadeb-keybinding-add 'Music' 'spotify' '<Super><Shift>m'
-omadeb-keybinding-add 'Editor' 'omadeb-launch-editor' '<Super><Shift>n'
+omadeb-gnome-keybinding-add 'Terminal' 'xdg-terminal-exec' '<Super>Return'
+omadeb-gnome-keybinding-add 'Terminal' 'xdg-terminal-exec' '<Control><Alt>t'
+omadeb-gnome-keybinding-add 'Tmux' 'xdg-terminal-exec bash -c "tmux attach || tmux new -s Work"' '<Super><Alt>Return'
+omadeb-gnome-keybinding-add 'Browser' 'omadeb-launch-browser --new-window' '<Shift><Super>b'
+omadeb-gnome-keybinding-add 'Browser' 'omadeb-launch-browser --new-window' '<Shift><Super>Return'
+omadeb-gnome-keybinding-add 'Browser (private)' 'omadeb-launch-browser --private' '<Shift><Alt><Super>b'
+omadeb-gnome-keybinding-add 'File manager' 'nautilus --new-window' '<Shift><Super>f'
+omadeb-gnome-keybinding-add 'Docker' 'omadeb-launch-tui lazydocker' '<Super><Shift>d'
+omadeb-gnome-keybinding-add 'Music' 'spotify' '<Super><Shift>m'
+omadeb-gnome-keybinding-add 'Editor' 'omadeb-launch-editor' '<Super><Shift>n'
 
 # Set webapps hotkeys
-omadeb-keybinding-add 'ChatGPT' 'omadeb-launch-webapp "https://chatgpt.com" "ChatGPT"' '<Super><Shift>a'
-omadeb-keybinding-add 'WhatsApp' 'omadeb-launch-webapp "WhatsApp" "https://web.whatsapp.com/" "WhatsApp"' '<Super><Shift><Alt>g'
-omadeb-keybinding-add 'YouTube' 'omadeb-launch-webapp "https://youtube.com/" "YouTube"' '<Super><Shift>y'
-omadeb-keybinding-add 'GitHub' 'omadeb-launch-webapp "https://github.com/" "GitHub"' '<Super><Shift>h'
+omadeb-gnome-keybinding-add 'ChatGPT' 'omadeb-launch-webapp "https://chatgpt.com" "ChatGPT"' '<Super><Shift>a'
+omadeb-gnome-keybinding-add 'WhatsApp' 'omadeb-launch-webapp "WhatsApp" "https://web.whatsapp.com/" "WhatsApp"' '<Super><Shift><Alt>g'
+omadeb-gnome-keybinding-add 'YouTube' 'omadeb-launch-webapp "https://youtube.com/" "YouTube"' '<Super><Shift>y'
+omadeb-gnome-keybinding-add 'GitHub' 'omadeb-launch-webapp "https://github.com/" "GitHub"' '<Super><Shift>h'
 
 # Enable Compose key on Caps Lock
 gsettings set org.gnome.desktop.input-sources xkb-options "['compose:caps']"

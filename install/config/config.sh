@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Copy over Omadeb configs
 mkdir -p ~/.config
 cp -R ~/.local/share/omadeb/config/* ~/.config/

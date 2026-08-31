@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Allow the user to change the branding
 mkdir -p ~/.config/omadeb/branding
 cp ~/.local/share/omadeb/brand ~/.config/omadeb/branding/brand

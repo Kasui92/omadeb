@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Install new extensions
 gext install tactile@lundal.io
 gext install just-perfection-desktop@just-perfection

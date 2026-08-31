@@ -29,6 +29,7 @@ flatpak
 fonts-cascadia-mono-nf
 fzf
 
+gh
 gir1.2-clutter-1.0
 gir1.2-gtop-2.0
 gnome-shell-extension-manager
@@ -46,12 +47,12 @@ lazydocker
 lazygit
 libffi-dev
 libgdbm-dev
-libreoffice
 libjemalloc2
 libmagickwand-dev
 libncurses-dev
 libpq-dev
 libreadline-dev
+libreoffice
 libsqlite3-0
 libssl-dev
 libvips42t64
@@ -62,10 +63,8 @@ mpv
 
 nautilus-open-any-terminal
 
-obs-studio
 omadeb-nvim
 omadeb-walker
-omadeb-zellij
 
 pinta
 pipx
@@ -101,6 +100,5 @@ yaru-theme-icon
 yaru-theme-sound
 yaru-theme-gnome-shell
 
-zellij
 zlib1g-dev
 zoxide

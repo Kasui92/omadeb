@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Set first-run mode marker so we can install stuff post-installation
 mkdir -p ~/.local/state/omadeb
 touch ~/.local/state/omadeb/first-run.mode
@@ -15,7 +13,7 @@ After=default.target
 Type=oneshot
 Environment=DISPLAY=:0
 Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/%U/bus
-ExecStart=/bin/bash $OMADEB_PATH/bin/omadeb-cmd-first-run
+ExecStart=/bin/bash $OMADEB_PATH/bin/omadeb-first-run
 ExecStartPost=systemctl --user disable omadeb-first-run.service
 RemainAfterExit=no
 

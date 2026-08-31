@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Setup user theme folder
 if [[ -d ~/.config/omadeb/themes ]]; then
   rm -rf ~/.config/omadeb/themes
