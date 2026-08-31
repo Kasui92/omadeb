@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# Finish the installation of Omadeb with items that can only be done after logging in.
+# omadeb:summary=Finish the installation of Omadeb with items that can only be done after logging in.
+# omadeb:requires-sudo=true
 
 set -e
 

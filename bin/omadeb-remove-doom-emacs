@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# omadeb:summary=Remove Doom Emacs configuration for the current user.
+# omadeb:requires-sudo=true
+
+echo "Removing Doom Emacs..."
+
+omadeb-pkg-drop emacs emacs-gtk
+sudo rm -rf ~/.config/emacs
+sudo rm -rf ~/.emacs.d
+sudo rm -rf ~/.config/doom

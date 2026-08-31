@@ -1,7 +1,0 @@
-#!/bin/bash
-
-# Overwrite the user config for wofi with the Omadeb default.
-
-omadeb-refresh-config wofi/config
-omadeb-refresh-config wofi/style.css
-omadeb-refresh-config wofi/search.css

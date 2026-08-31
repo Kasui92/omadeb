@@ -1,4 +1,6 @@
 #!/bin/bash
 
-# Check if a toggle is enabled (flag file exists)
+# omadeb:summary=Check if a toggle is enabled (flag file exists).
+# omadeb:args=<flag-name>
+
 [[ -f "$HOME/.local/state/omadeb/toggles/$1" ]]

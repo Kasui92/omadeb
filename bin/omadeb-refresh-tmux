@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Overwrite the user tmux config with the Omabuntu default and reload tmux.
+# omadeb:summary=Overwrite the user tmux config with the Omadeb default and reload tmux.
 
 omadeb-refresh-config tmux/tmux.conf
 omadeb-restart-tmux

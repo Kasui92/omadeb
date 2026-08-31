@@ -1,6 +1,11 @@
 #!/bin/bash
 
-# Add the named packages to the system if they're missing. Returns false if it couldn't be done.
+# omadeb:summary=Install APT packages with apt-get if they are missing.
+# omadeb:group=install
+# omadeb:name=package
+# omadeb:args=<packages...>
+# omadeb:examples=omadeb pkg add jq ripgrep
+# omadeb:requires-sudo=true
 
 if omadeb-pkg-missing "$@"; then
   sudo apt-get -y install "$@" || exit 1

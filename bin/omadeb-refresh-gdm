@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# omadeb:summary=Overwrite the GDM theme with the Omadeb default.
+# omadeb:requires-sudo=true
+
 OMADEB_PATH="$HOME/.local/share/omadeb"
 
 sudo mkdir -p /usr/share/pixmaps/omadeb

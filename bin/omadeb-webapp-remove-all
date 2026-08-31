@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# Remove all web apps installed via omadeb-webapp-install.
-# Identifies web apps by their Exec pattern (omadeb-launch-webapp or omadeb-webapp-handler).
+# omadeb:summary=Remove all web apps installed via omadeb-webapp-install.
 
 set -e
 
@@ -26,7 +25,7 @@ for file in "${webapp_desktop_files[@]}"; do
   app_name=$(basename "$file" .desktop)
   echo "Removing web app: $app_name"
   # A stale app-folder entry must not prevent removal of the web app itself.
-  if ! omadeb-app-folder-remove "$app_name.desktop" "Web Apps"; then
+  if ! omadeb-gnome-grid-folder-drop "$app_name.desktop" "Web Apps"; then
     echo "Warning: Could not remove $app_name from the Web Apps folder; continuing." >&2
   fi
   rm -f "$file"
@@ -37,5 +36,7 @@ done
 if command -v update-desktop-database &>/dev/null; then
   update-desktop-database "$APP_DIR" &>/dev/null || true
 fi
+
+omadeb-restart-walker
 
 echo "Web apps removed successfully."

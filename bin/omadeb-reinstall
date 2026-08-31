@@ -1,7 +1,9 @@
 #!/bin/bash
-set -e
 
-# Attempt to reinstall all default Omadeb packages and reset all the default configs.
+# omadeb:summary=Reinstall Omadeb packages and reset default configs.
+# omadeb:requires-sudo=true
+
+set -e
 
 echo -e "This will reinstall all the default Omadeb packages and reset all default configs.\nWarning: All user changes to configs will be lost.\n"
 

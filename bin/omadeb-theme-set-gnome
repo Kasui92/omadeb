@@ -1,42 +1,27 @@
 #!/bin/bash
 
-# Set GNOME theme according to Omadeb current theme.
+# omadeb:summary=Apply the current theme to GNOME color mode and icon settings.
+# omadeb:hidden=true
 
 # Change gnome modes
 GTK_THEME=~/.config/omadeb/current/theme/gtk.theme
 GTK_LIGHT_MODE=~/.config/omadeb/current/theme/light.mode
 
 if [[ -f $GTK_THEME ]]; then
-  GNOME_GTK_THEME=$(<$GTK_THEME)
+  OMADEB_GTK_THEME=$(<$GTK_THEME)
 else
-  GNOME_GTK_THEME="Yaru-blue"
+  OMADEB_GTK_THEME="Yaru-blue"
 fi
 
 if [[ -f $GTK_LIGHT_MODE ]]; then
   gsettings set org.gnome.desktop.interface color-scheme "prefer-light"
-  gsettings set org.gnome.desktop.interface gtk-theme "$GNOME_GTK_THEME"
+  gsettings set org.gnome.desktop.interface gtk-theme "$OMADEB_GTK_THEME"
 else
   gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
-  if [[ -d "/usr/share/themes/${GNOME_GTK_THEME}-dark" ]]; then
-    gsettings set org.gnome.desktop.interface gtk-theme "${GNOME_GTK_THEME}-dark"
+  if [[ -d "/usr/share/themes/${OMADEB_GTK_THEME}-dark" ]]; then
+    gsettings set org.gnome.desktop.interface gtk-theme "${OMADEB_GTK_THEME}-dark"
   else
-    gsettings set org.gnome.desktop.interface gtk-theme "$GNOME_GTK_THEME"
-  fi
-fi
-
-# Change gnome shell theme
-GNOME_SHELL_THEME=~/.config/omadeb/current/theme/shell.theme
-if [[ -f $GNOME_SHELL_THEME ]]; then
-  gsettings set org.gnome.shell.extensions.user-theme name "$(<$GNOME_SHELL_THEME)"
-else
-  if [[ ${GNOME_GTK_THEME,,} == *"yaru"* ]]; then
-    if [[ -f $GTK_LIGHT_MODE ]]; then
-      gsettings set org.gnome.shell.extensions.user-theme name "Yaru"
-    else
-      gsettings set org.gnome.shell.extensions.user-theme name "Yaru-dark"
-    fi
-  else
-    gsettings set org.gnome.shell.extensions.user-theme name "Default"
+    gsettings set org.gnome.desktop.interface gtk-theme "$OMADEB_GTK_THEME"
   fi
 fi
 
@@ -61,5 +46,5 @@ GNOME_ICONS_THEME=~/.config/omadeb/current/theme/icons.theme
 if [[ -f $GNOME_ICONS_THEME ]]; then
   gsettings set org.gnome.desktop.interface icon-theme "$(<$GNOME_ICONS_THEME)"
 else
-  gsettings set org.gnome.desktop.interface icon-theme "${GNOME_GTK_THEME}"
+  gsettings set org.gnome.desktop.interface icon-theme "${OMADEB_GTK_THEME}"
 fi

@@ -1,5 +1,0 @@
-#!/bin/bash
-
-# Launch an application using omadeb-launch-walker.
-
-omadeb-launch-walker -p "Launch..."

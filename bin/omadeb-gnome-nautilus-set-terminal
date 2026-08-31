@@ -1,9 +1,11 @@
 #!/bin/bash
 
-# Set the default terminal emulator for Nautilus to match the one set for Omadeb.
+# omadeb:summary=Set the terminal emulator to open from Nautilus.
+# omadeb:args=<terminal-emulator>
+# omadeb:examples=omadeb-gnome-nautilus-set-terminal gnome-terminal
 
 if [[ -z $1 ]]; then
-  echo "Usage: omadeb-terminal-set-nautilus [terminal-emulator]"
+  echo "Usage: omadeb-gnome-nautilus-set-terminal [terminal-emulator]"
   exit 1
 fi
 

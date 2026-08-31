@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# omadeb:summary=Launch Walker as an application launcher.
+
+# Launch an application using omadeb-launch-walker.
+
+omadeb-launch-walker -p "Launch..."

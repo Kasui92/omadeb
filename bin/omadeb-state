@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Manage persistent state files for Omadeb toggles and settings.
-# Usage: omadeb-state <set|clear> <state-name-or-pattern>
-# Used to track whether features like suspend, idle lock, etc are enabled or disabled.
+# omadeb:summary=Manage persistent state files for Omadeb toggles and settings.
+# omadeb:args=<set|clear> <state-name-or-pattern>
+# omadeb:hidden=true
 
 STATE_DIR="$HOME/.local/state/omadeb"
 mkdir -p "$STATE_DIR"

@@ -1,3 +1,5 @@
 #!/bin/bash
 
+# omadeb:summary=Print the current Omadeb git branch.
+
 echo $(git -C "$OMADEB_PATH" rev-parse --abbrev-ref HEAD)

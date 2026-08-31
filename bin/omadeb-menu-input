@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# omadeb:summary=Prompt for text input with Walker
+# omadeb:group=menu
+# omadeb:name=input
+# omadeb:args=prompt [walker args...]
+# omadeb:examples=omadeb menu input Reminder|omadeb-menu-input "Reminder in minutes" --width 400
+
+set -euo pipefail
+
+prompt="${1:-Input}"
+if (( $# > 0 )); then
+  shift
+fi
+
+omadeb-launch-walker --dmenu --inputonly --width 295 --minheight 1 --maxheight 1 -p "$prompt…" "$@" 2>/dev/null

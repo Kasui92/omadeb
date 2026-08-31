@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# Remove preinstalled Omadeb applications (web apps, TUIs, and selected packages).
-# This removes all web apps, TUIs, plus specific desktop applications.
+# omadeb:summary=Remove preinstalled Omadeb applications (web apps, TUIs, and selected packages).
 
 if gum confirm "Are you sure you want to remove all preinstalled web apps, TUI wrappers, and desktop applications?"; then
   echo -e "Removing preinstalled Omadeb applications...\n"
@@ -9,7 +8,7 @@ if gum confirm "Are you sure you want to remove all preinstalled web apps, TUI w
   omadeb-webapp-remove-all
   omadeb-tui-remove-all
 
-  # Remove npx stubs
+  # Remove npm stubs
   rm -f ~/.local/bin/codex ~/.local/bin/gemini ~/.local/bin/copilot ~/.local/bin/claude \
        ~/.local/bin/opencode ~/.local/bin/playwright-cli ~/.local/bin/pi
 

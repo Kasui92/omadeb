@@ -1,2 +1,5 @@
 #!/bin/bash
+
+# omadeb:summary=Print the installed Omadeb version.
+
 cat $OMADEB_PATH/version

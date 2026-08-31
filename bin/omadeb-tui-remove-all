@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# Remove all TUIs installed via omadeb-tui-install.
-# Identifies TUIs by their Exec pattern (xdg-terminal-exec).
+# omadeb:summary=Remove all TUIs installed via omadeb-tui-install.
 
 set -e
 

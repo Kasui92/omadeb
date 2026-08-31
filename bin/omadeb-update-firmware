@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# omadeb:summary=Update system firmware using fwupd.
+# omadeb:requires-sudo=true
+
 set -e
 
 echo -e "\e[32mUpdate Firmware\e[0m"

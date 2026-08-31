@@ -1,9 +1,13 @@
 #!/bin/bash
 
-# Share clipboard, file, or folder using LocalSend.
+# omadeb:summary=Share clipboard, files, or folders with LocalSend.
+# omadeb:group=share
+# omadeb:name=
+# omadeb:args=<clipboard|file|folder> [path...]
+# omadeb:examples=omadeb share clipboard | omadeb share file ~/Downloads/example.txt
 
 if (($# == 0)); then
-  echo "Usage: omadeb-cmd-share [clipboard|file|folder]"
+  echo "Usage: omadeb-menu-share [clipboard|file|folder]"
   exit 1
 fi
 

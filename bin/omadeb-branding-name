@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# omadeb:summary=Display the current Omadeb branding.
+
+if -f "$HOME/.config/omadeb/branding/brand"; then
+  cat "$HOME/.config/omadeb/branding/brand"
+else
+  cat $OMADEB_PATH/brand
+fi

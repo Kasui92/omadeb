@@ -1,13 +1,9 @@
 #!/bin/bash
 
-# Overwrite the user config for themes with the Omadeb defaults.
+# omadeb:summary=Reapply the current Omadeb theme.
 
-# Add missing theme links
-for f in ~/.local/share/omadeb/themes/*; do
-  if [[ ! -e ~/.config/omadeb/themes/$(basename "$f") ]]; then
-    echo -e "\e[32mCreating symlink for $(basename "$f")\e[0m"
-    ln -s "$f" ~/.config/omadeb/themes/
-  fi
-done
+THEME_NAME_PATH="$HOME/.config/omadeb/current/theme.name"
 
-
+if [[ -f $THEME_NAME_PATH ]]; then
+  OMADEB_THEME_SKIP_BACKGROUND=1 omadeb-theme-set "$(cat $THEME_NAME_PATH)"
+fi

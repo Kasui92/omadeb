@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# omadeb:summary=Update Omadeb and system packages.
+# omadeb:args=[-y]
+# omadeb:examples=omadeb update | omadeb update -y
+# omadeb:requires-sudo=true
+
 set -e
 
 trap 'echo ""; echo -e "\033[0;31mSomething went wrong during the update!\n\nPlease review the output above carefully, correct the error, and retry the update.\033[0m"' ERR

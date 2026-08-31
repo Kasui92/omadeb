@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# omadeb:summary=Switch Omadeb branches and update from the selected branch.
+# omadeb:args=<branch>
+
 set -e
 
 if (($# == 0)); then

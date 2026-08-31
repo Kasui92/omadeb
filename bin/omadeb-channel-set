@@ -1,12 +1,8 @@
 #!/bin/bash
 
-# Set the Omadeb channel, which dictates what git branch is used.
-#
-# Stable uses the main branch, which only sees updates on official releases.
-#
-# Dev tracks the active development dev branch, which may include partial or broken updates.
-# This should only be used by Omadeb developers and people with a lot of experience managing
-# Linux systems.
+# omadeb:summary=Set the Omadeb channel, which dictates what git branch and package repository is used.
+# omadeb:args=<stable|dev>
+# omadeb:requires-sudo=true
 
 if (($# == 0)); then
   echo "Usage: omadeb-channel-set [stable|dev]"

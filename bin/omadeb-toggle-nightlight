@@ -1,12 +1,15 @@
 #!/bin/bash
 
+# omadeb:summary=Toggle nightlight screen temperature.
+# omadeb:examples=omadeb toggle nightlight
+
 omadeb-toggle \
   --notification-summary "Night Light" \
   --enabled-notification "  Nightlight screen temperature" \
   --disabled-notification "   Daylight screen temperature" \
   night-light
 
-if omadeb-toggle-enable night-light; then
+if omadeb-toggle-enabled night-light; then
   gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
 else
   gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled false

@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# omadeb:summary=Edit, set, or reset About branding
+# omadeb:group=branding
+# omadeb:name=about
+# omadeb:args=<image|text|reset>
+# omadeb:examples=omadeb branding about image | omadeb branding about text | omadeb branding about reset
+
+set -euo pipefail
+
+SOURCE_DIR="${XDG_PICTURES_DIR:-$HOME/Pictures}"
+
+case "${1:-}" in
+image)
+  image=$(omadeb-menu-file "Pick png/svg from $SOURCE_DIR" "${SOURCE_DIR}" "svg png")
+  if [[ -n $image ]] && omadeb-transcode-ascii "$image" ~/.config/omadeb/branding/about.txt --width 54 --height 26; then
+    omadeb-launch-about >/dev/null 2>&1
+  fi
+  ;;
+text)
+  omadeb-launch-editor ~/.config/omadeb/branding/about.txt >/dev/null 2>&1 && omadeb-launch-about >/dev/null 2>&1
+  ;;
+reset)
+  cp "$OMADEB_PATH/icon.txt" ~/.config/omadeb/branding/about.txt && omadeb-launch-about >/dev/null 2>&1
+  ;;
+*)
+  echo "Usage: omadeb-branding-about <image|text|reset>" >&2
+  exit 1
+  ;;
+esac

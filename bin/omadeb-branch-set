@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# Set the branch for Omadeb's git repository.
+# omadeb:summary=Set the branch for Omadeb's git repository.
+# omadeb:args=<main|dev>
 
 if (($# == 0)); then
   echo "Usage: omadeb-branch-set [main|dev]"

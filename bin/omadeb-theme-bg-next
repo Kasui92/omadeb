@@ -1,18 +1,22 @@
 #!/bin/bash
 
-# Cycles through the background images available
+# omadeb:summary=Cycle to the next background for the current theme
+# omadeb:examples=omadeb theme bg next
 
 THEME_NAME=$(cat "$HOME/.config/omadeb/current/theme.name" 2>/dev/null)
 THEME_BACKGROUNDS_PATH="$HOME/.config/omadeb/current/theme/backgrounds/"
 USER_BACKGROUNDS_PATH="$HOME/.config/omadeb/backgrounds/$THEME_NAME/"
 CURRENT_BACKGROUND_LINK="$HOME/.config/omadeb/current/background"
 
-mapfile -d '' -t BACKGROUNDS < <(find -L "$USER_BACKGROUNDS_PATH" "$THEME_BACKGROUNDS_PATH" -maxdepth 1 -type f -print0 2>/dev/null | sort -z)
+mapfile -d '' -t BACKGROUNDS < <(
+  find -L "$USER_BACKGROUNDS_PATH" "$THEME_BACKGROUNDS_PATH" -maxdepth 1 -type f \
+    \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.gif' -o -iname '*.bmp' -o -iname '*.webp' \) \
+    -print0 2>/dev/null | sort -z
+)
 TOTAL=${#BACKGROUNDS[@]}
 
 if (( TOTAL == 0 )); then
-  omadeb-notify "No background was found for theme" -t 2000
-  omadeb-theme-bg-set
+  omadeb-notification-send "No background was found for theme" -t 2000
 else
   # Get current background from symlink
   if [[ -L $CURRENT_BACKGROUND_LINK ]]; then
@@ -40,9 +44,5 @@ else
     NEW_BACKGROUND="${BACKGROUNDS[$NEXT_INDEX]}"
   fi
 
-  # Set new background symlink
-  ln -nsf "$NEW_BACKGROUND" "$CURRENT_BACKGROUND_LINK"
-
-  # Update GNOME background settings
-  omadeb-theme-bg-set "$CURRENT_BACKGROUND_LINK"
+  omadeb-theme-bg-set "$NEW_BACKGROUND"
 fi

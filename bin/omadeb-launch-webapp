@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# omadeb:summary=Launch a URL as a web app in the default supported browser.
+# omadeb:args=<app-url> <app-name>
+
 # omadeb-launch-webapp: Launch a web application as a standalone window.
 # Usage: omadeb-launch-webapp <app-url> <app-name>
 
