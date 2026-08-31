@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="603.3333129882812" height="130" xmlns="http://www.w3.org/2000/svg">
-  <text x="20" y="20" font-family="monospace" font-size="18px" fill="#9ece6a" xml:space="preserve">
-    <tspan x="20" dy="18"> ██████  ███    ███  █████  ██████  ███████ ██████  </tspan>
-    <tspan x="20" dy="18">██    ██ ████  ████ ██   ██ ██   ██ ██      ██   ██ </tspan>
-    <tspan x="20" dy="18">██    ██ ██ ████ ██ ███████ ██   ██ █████   ██████  </tspan>
-    <tspan x="20" dy="18">██    ██ ██  ██  ██ ██   ██ ██   ██ ██      ██   ██ </tspan>
-    <tspan x="20" dy="18"> ██████  ██      ██ ██   ██ ██████  ███████ ██████  </tspan>
+<svg width="680.1666870117188" height="144" xmlns="http://www.w3.org/2000/svg">
+  <text x="0" y="0" font-family="'Source Code Pro', 'Fira Code', 'DejaVu Sans Mono', Courier, monospace" font-size="18px" fill="#000000" letter-spacing="-2px" xml:space="preserve">
+    <tspan x="0" dy="18"> ▄██████▄    ▄▄▄▄███▄▄▄▄      ▄████████ ████████▄     ▄████████ ▀█████████▄  </tspan>
+    <tspan x="0" dy="18">███    ███ ▄██▀▀▀███▀▀▀██▄   ███    ███ ███   ▀███   ███    ███   ███    ███ </tspan>
+    <tspan x="0" dy="18">███    ███ ███   ███   ███   ███    ███ ███    ███   ███    █▀    ███    ███ </tspan>
+    <tspan x="0" dy="18">███    ███ ███   ███   ███   ███    ███ ███    ███  ▄███▄▄▄      ▄███▄▄▄██▀  </tspan>
+    <tspan x="0" dy="18">███    ███ ███   ███   ███ ▀███████████ ███    ███ ▀▀███▀▀▀     ▀▀███▀▀▀██▄  </tspan>
+    <tspan x="0" dy="18">███    ███ ███   ███   ███   ███    ███ ███    ███   ███    █▄    ███    ██▄ </tspan>
+    <tspan x="0" dy="18">███    ███ ███   ███   ███   ███    ███ ███   ▄███   ███    ███   ███    ███ </tspan>
+    <tspan x="0" dy="18"> ▀██████▀   ▀█   ███   █▀    ███    █▀  ████████▀    ██████████ ▄█████████▀  </tspan>
   </text>
 </svg>
