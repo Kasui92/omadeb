@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# omadeb:summary=Install Doom Emacs configuration for the current user.
+# omadeb:requires-sudo=true
+
+echo "Installing Doom Emacs..."
+
+omadeb-pkg-add emacs
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
+~/.config/emacs/bin/doom install

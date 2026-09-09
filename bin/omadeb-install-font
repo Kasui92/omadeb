@@ -1,6 +1,8 @@
 #!/bin/bash
 
-# Install one of the supported fonts. Usually called via Install > Fonts > * in the Omadeb Menu.
+# omadeb:summary=Install a font for use in the terminal and code editor.
+# omadeb:args=<font>
+# omadeb:examples=omadeb-install-font jetbrains-mono
 
 if [[ -z $1 ]]; then
   echo "Usage: omadeb-install-font <font>" >&2

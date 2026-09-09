@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# omadeb:summary=Remove the Minecraft launcher and its packages.
+
+echo "Removing Minecraft..."
+
+omadeb-pkg-drop openjdk-8-jdk minecraft-launcher

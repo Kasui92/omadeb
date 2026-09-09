@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# Creates a new Omadeb migration named after the unix timestamp of the last commit.
-# Only intended for Omadeb developers.
+# omadeb:summary=Creates a new Omadeb migration named after the unix timestamp of the last commit.
 
 cd ~/.local/share/omadeb
 migration_file="$HOME/.local/share/omadeb/migrations/$(git log -1 --format=%cd --date=unix).sh"

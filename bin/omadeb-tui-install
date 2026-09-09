@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# omadeb:summary=Create a desktop launcher for a terminal UI app.
+# omadeb:args=[name command icon-url]
+
 set -e
 
 if (( $# != 3 )); then

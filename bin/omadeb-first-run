@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# omadeb:summary=Finish the installation of Omadeb with items that can only be done after logging in.
+# omadeb:requires-sudo=true
+
+set -e
+
+OMADEB_PATH="$HOME/.local/share/omadeb"
+FIRST_RUN_MODE=~/.local/state/omadeb/first-run.mode
+
+if [[ -f $FIRST_RUN_MODE ]]; then
+  bash "$OMADEB_PATH/install/first-run/firewall.sh"
+  bash "$OMADEB_PATH/install/first-run/elephant.sh"
+  sudo rm -f /etc/sudoers.d/first-run
+
+  bash "$OMADEB_PATH/install/first-run/welcome.sh"
+  rm -f "$FIRST_RUN_MODE"
+fi

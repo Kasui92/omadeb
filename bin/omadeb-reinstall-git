@@ -1,16 +1,14 @@
 #!/bin/bash
+
+# omadeb:summary=Reinstall the Omadeb source directory from git.
+
 set -e
 
 # Reinstall the Omadeb configuration directory from the git source.
-#
-# URL and branch are derived from the existing $OMADEB_PATH checkout so
-# any fork (arm ports, personal customizations, etc.) reinstalls from
-# the same remote it was running on. Falls back to upstream only if the
-# existing install has no usable git metadata.
 
 git clone --depth=1 "https://github.com/omakasui/omadeb.git" ~/.local/share/omadeb-new >/dev/null
 DEFAULT_URL="https://github.com/omakasui/omadeb.git"
-DEFAULT_BRANCH="master"
+DEFAULT_BRANCH="main"
 
 REMOTE_URL=$(git -C "$OMADEB_PATH" remote get-url origin 2>/dev/null || echo "$DEFAULT_URL")
 BRANCH=$(git -C "$OMADEB_PATH" rev-parse --abbrev-ref HEAD 2>/dev/null || echo "$DEFAULT_BRANCH")

@@ -1,5 +1,3 @@
-#!/bin/bash
-
 abort() {
   echo -e "\e[$OMADEB_BRAND install requires: $1\e[0m"
   echo

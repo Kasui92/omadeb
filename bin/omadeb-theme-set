@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# omadeb-theme-set: Set a theme, specified by its name.
-# Usage: omadeb-theme-set <theme-name>
+# omadeb:summary=Apply an Omadeb theme.
+# omadeb:args=<theme-name>
+# omadeb:examples=omadeb theme list | omadeb theme set "Tokyo Night"
 
 if [[ -z $1 ]]; then
   echo "Usage: omadeb-theme-set <theme-name>" >&2
@@ -30,6 +31,11 @@ mkdir -p "$NEXT_THEME_PATH"
 cp -r "$OMADEB_THEMES_PATH/$THEME_NAME/"* "$NEXT_THEME_PATH/" 2>/dev/null
 cp -r "$USER_THEMES_PATH/$THEME_NAME/"* "$NEXT_THEME_PATH/" 2>/dev/null
 
+# Generate colors.toml from alacritty.toml if theme is missing colors.toml
+if [[ ! -f $NEXT_THEME_PATH/colors.toml && -f $NEXT_THEME_PATH/alacritty.toml ]]; then
+  omadeb-theme-colors-from-alacritty "$NEXT_THEME_PATH"
+fi
+
 # Generate dynamic configs
 omadeb-theme-set-templates
 
@@ -41,7 +47,9 @@ mv "$NEXT_THEME_PATH" "$CURRENT_THEME_PATH"
 echo "$THEME_NAME" > "$HOME/.config/omadeb/current/theme.name"
 
 # Change background with theme
-omadeb-theme-bg-next
+if [[ $OMADEB_THEME_SKIP_BACKGROUND != "1" ]]; then
+  omadeb-theme-bg-next
+fi
 
 # Restart components to apply new theme
 omadeb-restart-btop
@@ -51,8 +59,9 @@ omadeb-restart-opencode
 
 # Change app specific themes
 omadeb-theme-set-gnome
+omadeb-theme-set-gnome-extensions
 omadeb-theme-set-vscode
 omadeb-theme-set-obsidian
 
 # Call hook on theme set
-omadeb-hook theme-set "$THEME_NAME"
+omadeb-hook theme-set "$THEME_NAME" >/dev/null

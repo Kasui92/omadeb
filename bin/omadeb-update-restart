@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo
+# omadeb:summary=Prompt for required reboot or service restarts after updates.
 
 if [[ -f $HOME/.local/state/omadeb/reboot-required ]]; then
   echo

@@ -4,14 +4,14 @@ description: >
   REQUIRED for end-user customization of Linux desktop, window manager, or system config.
   Use when editing ~/.config/alacritty/, ~/.config/kitty/, , ~/.config/ghostty/, ~/.config/walker/,
   ~/.config/omadeb/, or working with GNOME settings. Triggers: GNOME extensions,
-  keybindings, themes, wallpaper, terminal config, night light, dock settings,
+  keybindings, themes, background, terminal config, night light, dock settings,
   settings, display config, and user-facing omadeb commands. Excludes Omadeb
   source development in ~/.local/share/omadeb/ and omadeb-dev-* workflows.
 ---
 
 # Omadeb Skill
 
-Manage [Omadeb](https://omadeb.omakasui.org/) Linux systems - an opinionated Debian Trixie 13 development environment.
+Manage [Omadeb](https://omadeb.omakasui.org/) Linux systems - an opinionated Ubuntu 24.04+ development environment.
 
 This skill is for end-user customization on installed systems.
 It is not for contributing to Omadeb source code.
@@ -24,12 +24,12 @@ It is not for contributing to Omadeb source code.
 - Editing terminal configs (alacritty, kitty, ghostty)
 - Working with GNOME settings (gsettings)
 - GNOME extensions, dock, keybindings, appearance
-- Themes, wallpapers, fonts, appearance changes
+- Themes, backgrounds, fonts, appearance changes
 - User-facing `omadeb-*` commands (`omadeb-theme-*`, `omadeb-refresh-*`, `omadeb-restart-*`, etc.)
 - Night light, workspace settings, display configuration
 - Application installation or removal
 
-**If you're about to edit a config file in ~/.config/ on this Debian system, STOP and use this skill first.**
+**If you're about to edit a config file in ~/.config/ on this Ubuntu system, STOP and use this skill first.**
 
 **Do NOT use this skill for Omadeb development tasks** (editing files in `~/.local/share/omadeb/`, creating migrations, or running `omadeb-dev-*` workflows).
 
@@ -75,7 +75,7 @@ Omadeb is built on:
 
 | Component                   | Purpose              | Config Location            |
 | --------------------------- | -------------------- | -------------------------- |
-| **Debian 13+**              | Base OS              | `/etc/`, `~/.config/`      |
+| **Ubuntu 24.04+**           | Base OS              | `/etc/`, `~/.config/`      |
 | **GNOME**                   | Desktop environment  | GNOME settings (gsettings) |
 | **Alacritty/Kitty/Ghostty** | Terminals            | `~/.config/<terminal>/`    |
 | **Walker**                  | Application launcher | `~/.config/walker/`        |
@@ -101,19 +101,18 @@ cat $(which omadeb-theme-set)
 
 ### Command Categories
 
-| Prefix                | Purpose                                   | Example                     |
-| --------------------- | ----------------------------------------- | --------------------------- |
-| `omadeb-refresh-*`    | Reset config to defaults (backs up first) | `omadeb-refresh-gnome`      |
-| `omadeb-restart-*`    | Restart a service/app                     | `omadeb-restart-terminal`   |
-| `omadeb-toggle-*`     | Toggle feature on/off                     | `omadeb-toggle-nightlight`  |
-| `omadeb-theme-*`      | Theme management                          | `omadeb-theme-set <name>`   |
-| `omadeb-install-*`    | Install optional software                 | `omadeb-install-docker-dbs` |
-| `omadeb-launch-*`     | Launch apps                               | `omadeb-launch-browser`     |
-| `omadeb-cmd-*`        | System commands                           | `omadeb-system-shutdown`    |
-| `omadeb-app-*`        | Application management                    | `omadeb-app-install <name>` |
-| `omadeb-font-*`       | Font management                           | `omadeb-font-set <name>`    |
-| `omadeb-keybinding-*` | Keybinding management                     | `omadeb-keybinding-add`     |
-| `omadeb-update`       | System update                             | `omadeb-update`             |
+| Prefix                      | Purpose                                   | Example                       |
+| --------------------------- | ----------------------------------------- | ----------------------------- |
+| `omadeb-refresh-*`          | Reset config to defaults (backs up first) | `omadeb-refresh-gnome`        |
+| `omadeb-restart-*`          | Restart a service/app                     | `omadeb-restart-terminal`     |
+| `omadeb-toggle-*`           | Toggle feature on/off                     | `omadeb-toggle-nightlight`    |
+| `omadeb-theme-*`            | Theme management                          | `omadeb-theme-set <name>`     |
+| `omadeb-install-*`          | Install optional software                 | `omadeb-install-docker-dbs`   |
+| `omadeb-launch-*`           | Launch apps                               | `omadeb-launch-browser`       |
+| `omadeb-cmd-*`              | System commands                           | `omadeb-system-shutdown`      |
+| `omadeb-font-*`             | Font management                           | `omadeb-font-set <name>`      |
+| `omadeb-gnome-keybinding-*` | Keybinding management                     | `omadeb-gnome-keybinding-add` |
+| `omadeb-update`             | System update                             | `omadeb-update`               |
 
 ## Configuration Locations
 
@@ -163,7 +162,7 @@ gsettings set org.gnome.desktop.wm.keybindings close "['<Super>w']"
 ├── config.toml      # Main configuration
 ```
 
-**Commands:** `omadeb-apps` (launches walker), `omadeb-refresh-walker`
+**Commands:** `omadeb-menu-app` (launches walker), `omadeb-refresh-walker`
 
 ### Other Configs
 
@@ -238,7 +237,6 @@ When customizations go wrong:
 ```bash
 # Reset specific config (creates backup automatically)
 omadeb-refresh-gnome
-omadeb-refresh-alacritty
 omadeb-refresh-walker
 
 # The refresh command:
@@ -255,7 +253,7 @@ omadeb-refresh-walker
 omadeb-theme-list              # Show available themes
 omadeb-theme-current           # Show current theme
 omadeb-theme-set <name>        # Apply theme (use "Tokyo Night" not "tokyo-night")
-omadeb-theme-bg-next           # Cycle wallpaper
+omadeb-theme-bg-next           # Cycle backgrounds
 omadeb-theme-install <url>     # Install from git repo
 ```
 
@@ -268,14 +266,14 @@ Theme files affect:
 
 ### Keybindings
 
-Use `omadeb-keybinding-add` and `omadeb-keybinding-remove` commands:
+Use `omadeb-gnome-keybinding-add` and `omadeb-gnome-keybinding-drop` commands:
 
 ```bash
 # Add a custom keybinding
-omadeb-keybinding-add "Open Terminal" "xdg-terminal-exec" "<Primary><Alt>t"
+omadeb-gnome-keybinding-add "Open Terminal" "xdg-terminal-exec" "<Primary><Alt>t"
 
 # Remove a keybinding
-omadeb-keybinding-remove "Open Terminal"
+omadeb-gnome-keybinding-drop "Open Terminal"
 
 # View current custom keybindings
 gsettings get org.gnome.settings-daemon.plugins.media-keys custom-keybindings
@@ -306,7 +304,7 @@ Default font: **CaskaydiaMono Nerd Font**
 
 ```bash
 # Install applications
-omadeb-app-install <name>      # Install a single app
+omadeb-pkg-add <package-name> # Install via apt
 omadeb-install-terminal <name> # Install and set default terminal
 
 # Available applications (in ~/.local/share/omadeb/applications/install/):
@@ -317,8 +315,8 @@ omadeb-install-terminal <name> # Install and set default terminal
 # And many more...
 
 # Application folder management (for GNOME app grid)
-omadeb-app-folder-add <app.desktop> <folder-name>
-omadeb-app-folder-remove <app.desktop> <folder-name>
+omadeb-gnome-grid-folder-add <app.desktop> <folder-name>
+omadeb-gnome-grid-folder-drop <app.desktop> <folder-name>
 ```
 
 ### Night Light
@@ -335,12 +333,12 @@ gsettings set org.gnome.settings-daemon.plugins.color night-light-temperature 40
 ### System
 
 ```bash
-omadeb-update                  # Full system update (Debian + Omadeb)
+omadeb-update                  # Full system update (Ubuntu + Omadeb)
 omadeb-state                   # Show Omadeb state/version
 omadeb-system-shutdown            # Shutdown
 omadeb-system-reboot              # Reboot
 omadeb-system-logout              # Logout
-omadeb-system-lock-screen         # Lock screen
+omadeb-system-lock         # Lock screen
 ```
 
 ## Troubleshooting
@@ -370,7 +368,7 @@ When user requests system changes:
 3. **Is it a config edit?** Edit in `~/.config/`, never `~/.local/share/omadeb/`
 4. **Is it a theme customization?** Create a NEW custom theme directory
 5. **Is it automation?** Use hooks in `~/.config/omadeb/hooks/`
-6. **Is it a package install?** Check if available via `omadeb-app-install`, otherwise use `omadeb-pkg-add`
+6. **Is it a package install?** Check if available via `omadeb-install-*`, otherwise use `omadeb-pkg-add`
 7. **Unsure if command exists?** Search with `compgen -c | grep omadeb`
 
 ## Out of Scope
@@ -384,8 +382,8 @@ This skill intentionally does not cover Omadeb source development. Do not use th
 ## Example Requests
 
 - "Change my theme to catppuccin" -> `omadeb-theme-set catppuccin`
-- "Add a keybinding for Ctrl+Alt+E to open file manager" -> `omadeb-keybinding-add "File Manager" "nautilus" "<Primary><Alt>e"`
-- "Install Visual Studio Code" -> `omadeb-app-install visual-studio-code`
+- "Add a keybinding for Ctrl+Alt+E to open file manager" -> `omadeb-gnome-keybinding-add "File Manager" "nautilus" "<Primary><Alt>e"`
+- "Install Visual Studio Code" -> `omadeb-install-vscode`
 - "Make the terminal font bigger" -> `omadeb-font-size-set 12`
 - "Set up night light to turn on automatically" -> `gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true; gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-automatic true`
 - "Customize the tokyo-night theme colors" -> Create `~/.config/omadeb/themes/tokyo-night-custom/` by copying from stock, then edit

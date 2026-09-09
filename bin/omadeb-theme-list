@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# omadeb:summary=List available themes.
+# omadeb:examples=omadeb theme list | omadeb theme set "Tokyo Night"
+
 {
   find ~/.config/omadeb/themes/ -mindepth 1 -maxdepth 1 \( -type d -o -type l \) -printf '%f\n'
   find "$OMADEB_PATH/themes/" -mindepth 1 -maxdepth 1 -type d -printf '%f\n'

@@ -1,13 +1,11 @@
-#!/bin/bash
-
 run_logged $OMADEB_INSTALL/packaging/base.sh
 run_logged $OMADEB_INSTALL/packaging/flathub.sh
 run_logged $OMADEB_INSTALL/packaging/pipx.sh
 run_logged $OMADEB_INSTALL/packaging/fonts.sh
 run_logged $OMADEB_INSTALL/packaging/nvim.sh
-run_logged $OMADEB_INSTALL/packaging/tools.sh
+run_logged $OMADEB_INSTALL/packaging/docker.sh
+run_logged $OMADEB_INSTALL/packaging/mise.sh
 run_logged $OMADEB_INSTALL/packaging/icons.sh
 run_logged $OMADEB_INSTALL/packaging/webapps.sh
 run_logged $OMADEB_INSTALL/packaging/tuis.sh
-run_logged $OMADEB_INSTALL/packaging/npx.sh
-
+run_logged $OMADEB_INSTALL/packaging/npm.sh

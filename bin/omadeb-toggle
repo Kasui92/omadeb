@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# Toggle Omadeb features between enabled and disabled
+# omadeb:summary=Toggle Omadeb features between enabled and disabled.
+# omadeb:args=[--enabled-notification <text>] [--disabled-notification <text>] <flag-name>
 
 ENABLED_NOTIFICATION=""
 DISABLED_NOTIFICATION=""
@@ -20,9 +21,9 @@ FLAG="$HOME/.local/state/omadeb/toggles/$FLAG_NAME"
 
 if [[ -f $FLAG ]]; then
   rm $FLAG
-  [[ -n $DISABLED_NOTIFICATION ]] && omadeb-notify "$NOTIFICATION_SUMMARY" "$DISABLED_NOTIFICATION"
+  [[ -n $DISABLED_NOTIFICATION ]] && omadeb-notification-send -g "󰂛" "$NOTIFICATION_SUMMARY" "$DISABLED_NOTIFICATION"
 else
   mkdir -p "$(dirname $FLAG)"
   touch $FLAG
-  [[ -n $ENABLED_NOTIFICATION ]] && omadeb-notify "$NOTIFICATION_SUMMARY" "$ENABLED_NOTIFICATION"
+  [[ -n $ENABLED_NOTIFICATION ]] && omadeb-notification-send -g "󰂚" "$NOTIFICATION_SUMMARY" "$ENABLED_NOTIFICATION"
 fi

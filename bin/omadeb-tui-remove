@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# omadeb:summary=Remove terminal UI desktop launchers.
+# omadeb:args=[name...]
+
 set -e
 
 ICON_DIR="$HOME/.local/share/applications/icons"

@@ -1,5 +1,3 @@
-#!/bin/bash
-
 omadeb_migrations_state_path=~/.local/state/omadeb/migrations
 mkdir -p $omadeb_migrations_state_path
 

@@ -1,1 +1,1 @@
-for f in ~/.local/share/omadeb/default/bash/fns/*; do source "$f"; done
+for f in $OMADEB_PATH/default/bash/fns/*; do source "$f"; done

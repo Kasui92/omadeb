@@ -1,5 +1,0 @@
-#!/bin/bash
-
-# Send a desktop notification using Omadeb branding.
-
-notify-send -i ~/.config/omadeb/branding/notify.png -a "Omadeb" "$@"

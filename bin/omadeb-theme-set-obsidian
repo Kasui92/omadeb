@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# Sync Omadeb theme to all Obsidian vaults
+# omadeb:summary=Sync Omadeb theme to all Obsidian vaults.
+# omadeb:hidden=true
 
 CURRENT_THEME_DIR="$HOME/.config/omadeb/current/theme"
 
@@ -19,7 +20,7 @@ jq -r '.vaults | values[].path' ~/.config/obsidian/obsidian.json 2>/dev/null | w
   "minAppVersion": "0.16.0",
   "description": "Automatically syncs with your current Omadeb system theme colors and fonts",
   "author": "Omadeb",
-  "authorUrl": "https://omadeb.omakasui.org"
+  "authorUrl": "https://omadeb.org"
 }
 EOF
 

@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Ensure we have curl available
 if ! command -v curl &> /dev/null; then
   omadeb-pkg-add curl
@@ -50,7 +48,7 @@ curl -fsSL https://keyrings.omakasui.org/omakasui-packages.gpg.key \
   | gpg --dearmor \
   | sudo tee /usr/share/keyrings/omakasui-packages.gpg > /dev/null
 
-codename=$(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")
+codename=$(. /etc/os-release && echo "$VERSION_CODENAME")
 
 if [[ ${OMADEB_CHANNEL:-stable} == "dev" ]]; then
   suite="${codename}-dev"

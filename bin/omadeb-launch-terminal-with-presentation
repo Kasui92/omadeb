@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Launch a floating terminal with the Omadeb logo presentation, then execute the command passed in, and finally end with the omadeb-show-done presentation.
-# Used by actions such as Update System.
+# omadeb:summary=Launch a floating terminal with the Omadeb presentation wrapper.
+# omadeb:args=<command>
 
 cmd="$*"
 xdg-terminal-exec bash -c "omadeb-show-logo; $cmd; if [ \$? -ne 130 ]; then omadeb-show-done; fi"

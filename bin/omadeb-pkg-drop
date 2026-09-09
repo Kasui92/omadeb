@@ -1,6 +1,8 @@
 #!/bin/bash
 
-# Remove all the named packages from the system if they're installed (otherwise ignore).
+# omadeb:summary=Remove all the named packages from the system if they're installed (otherwise ignore).
+# omadeb:args=<packages...>
+# omadeb:requires-sudo=true
 
 for pkg in "$@"; do
   if dpkg -l | grep -q "$pkg"; then

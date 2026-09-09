@@ -1,7 +1,12 @@
 #!/bin/bash
+
+# omadeb:summary=Reinstall all default Omadeb packages from the stable channel.
+# omadeb:requires-sudo=true
+
 set -e
 
-# Reinstall all default Omadeb packages from the stable channel and downgrade any packages that are too new.
+# Set the package repository to the stable mirrors
+omadeb-refresh-apt
 
 # Ensure all packages are installed
 mapfile -t packages < <(grep -v '^#' "$OMADEB_PATH/install/omadeb-base.packages" | grep -v '^$')

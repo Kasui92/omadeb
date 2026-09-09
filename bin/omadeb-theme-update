@@ -1,8 +1,6 @@
 #!/bin/bash
 
-# Update all installed Omadeb themes by pulling the latest changes from their git repositories.
-
-omadeb-refresh-theme
+# omadeb:summary=Update user-installed git themes.
 
 for dir in ~/.config/omadeb/themes/*/; do
   if [[ -d $dir ]] && [[ ! -L ${dir%/} ]] && [[ -d $dir/.git ]]; then

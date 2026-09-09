@@ -9,7 +9,7 @@
 #
 # show_system_menu() {
 #   case $(menu "System" "  Lock\n󰐥  Shutdown") in
-#   *Lock*) omadeb-lock-screen ;;
+#   *Lock*) omadeb-system-lock ;;
 #   *Shutdown*) omadeb-system-shutdown ;;
 #   *) back_to show_main_menu ;;
 #   esac
